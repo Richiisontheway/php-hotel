@@ -1,6 +1,7 @@
 <?php
+    $count = 0;
     $hotels = [
-
+        
         [
             'name' => 'Hotel Belvedere',
             'description' => 'Hotel Belvedere Descrizione',
@@ -38,7 +39,6 @@
         ],
 
     ];
-
 ?>
 
 <!DOCTYPE html>
@@ -57,7 +57,42 @@
     </header>
     <main>
         <section>
-
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Parking</th>
+                            <th scope="col">Vote</th>
+                            <th scope="col">Distance_to_center</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                        foreach($hotels as $hotel){
+                            $count++;
+                    ?>
+                        <tr>
+                            <th scope="row"><?php echo $count ?></th>
+                                <?php
+                                    echo '<td>'.$hotel['name'].'</td>';
+                                    echo '<td>'.$hotel['description'].'</td>';
+                                    if($hotel['parking'] == true){
+                                        echo '<td>'.'disponibili'.'</td>';
+                                    }
+                                    else{
+                                        echo '<td>'.'finiti'.'</td>';
+                                    }
+                                    echo '<td>'.$hotel['vote'].'</td>';
+                                    echo '<td>'.$hotel['distance_to_center'].'Km'.'</td>';
+                                ?>
+                        </tr>
+                    <?php
+                        }
+                    ?>
+                    </tbody>
+                </table>
         </section>
     </main>
 </body>
